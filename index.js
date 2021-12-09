@@ -103,11 +103,19 @@ client.on('message', message => {
                 }
                 //Url obrázku
                 console.log(img.url)
+                let width = 1080
+                let height = 1080
+                try {
+                    width = img.width
+                    height = img.height
+                } catch (error) {
+                    console.log(error)
+                }
                 console.log(top)
                 console.log(bottom)
                 const meme = require("./public/memeCreator/meme")
                 try {
-                    const path = await meme.createMeme(img.url, top, bottom, img.width, img.height)
+                    const path = await meme.createMeme(img.url, top, bottom, width, height)
                     message.channel.send({
                         files: [{
                             attachment: path,
