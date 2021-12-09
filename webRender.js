@@ -18,4 +18,5 @@ async function screenshot(url) {
     return path
 }
 
+
 module.exports.screenshot = screenshot
