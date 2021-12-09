@@ -24,11 +24,16 @@ async function createMeme(url, top, bottom, width, height) {
             console.log(err)
     })
     console.log(__dirname + "/index.html")
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+        args: [
+          '--no-sandbox',
+          '--disable-setuid-sandbox',
+        ],
+      });
     const page = await browser.newPage();
     await page.setViewport({ width, height })
     await page.goto(__dirname + "/index.html");
-    const path = 'memeCreator/meme.png'
+    const path = 'imgs/meme.png'
     await page.screenshot({ path });
     await browser.close();
     return path
