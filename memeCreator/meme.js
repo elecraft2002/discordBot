@@ -24,7 +24,7 @@ async function createMeme(url, top, bottom, width, height) {
         if (err)
             console.log(err)
     })
-    console.log(filePath.resolve("/index.html"))
+    console.log(filePath.resolve("memeCreator/index.html"))
     const browser = await puppeteer.launch({
         args: [
             '--no-sandbox',
@@ -33,7 +33,7 @@ async function createMeme(url, top, bottom, width, height) {
     });
     const page = await browser.newPage();
     await page.setViewport({ width, height })
-    await page.goto(filePath.resolve("/index.html"));
+    await page.goto(filePath.resolve("memeCreator/index.html"));
     const path = 'imgs/meme.png'
     await page.screenshot({ path });
     await browser.close();
