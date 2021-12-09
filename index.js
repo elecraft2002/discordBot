@@ -53,17 +53,10 @@ client.on('message', message => {
                     let referenceMsg = await message.channel.messages.fetch(id)
                     //console.log(referenceMsg)
                     if (referenceMsg.attachments.size > 0) {
-                        if (referenceMsg.attachments.every(attachIsImage)) {
-                            referenceMsg.attachments.forEach(e => {
-                                imgUrl = e
-                                return
-                            })
-                        }
-                    }
-                    function attachIsImage(msgAttach) {
-                        var url = msgAttach.url;
-                        //True if this url is a png image.
-                        return url.indexOf("png", url.length - "png".length /*or 3*/) !== -1;
+                        referenceMsg.attachments.forEach(e => {
+                            imgUrl = e
+                            return
+                        })
                     }
                     return imgUrl
                 }
