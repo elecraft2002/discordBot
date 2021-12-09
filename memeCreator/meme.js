@@ -1,6 +1,7 @@
 'use strict';
 const puppeteer = require("puppeteer")
 const fs = require("fs")
+const filePath = require("path")
 
 async function createMeme(url, top, bottom, width, height) {
     console.log("rendering")
@@ -23,16 +24,16 @@ async function createMeme(url, top, bottom, width, height) {
         if (err)
             console.log(err)
     })
-    console.log(__dirname + "/index.html")
+    console.log(filePath.resolve("/index.html"))
     const browser = await puppeteer.launch({
         args: [
-          '--no-sandbox',
-          '--disable-setuid-sandbox',
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
         ],
-      });
+    });
     const page = await browser.newPage();
     await page.setViewport({ width, height })
-    await page.goto(__dirname + "/index.html");
+    await page.goto(filePath.resolve("/index.html"));
     const path = 'imgs/meme.png'
     await page.screenshot({ path });
     await browser.close();
