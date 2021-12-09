@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  font-family: IMPACT;
+}
+
+p {
+  position: absolute;
+  font-size: 10vw;
+  width: 80vw;
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+  -webkit-text-stroke: 5px black;
+  margin: 0 10vw;
+}
+.top {
+  top: 20px;
+}
+.bottom {
+  bottom: 20px;
+}
