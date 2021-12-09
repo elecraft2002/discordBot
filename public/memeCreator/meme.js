@@ -2,6 +2,7 @@
 const puppeteer = require("puppeteer")
 const fs = require("fs")
 const filePath = require("path")
+require('dotenv').config()
 
 async function createMeme(url, top, bottom, width, height) {
     console.log("rendering")
@@ -24,7 +25,7 @@ async function createMeme(url, top, bottom, width, height) {
         if (err)
             console.log(err)
     })
-    console.log(filePath.resolve("public/memeCreator/index.html"))
+    console.log(process.env.URL_PATH + "/memeCreator/index.html")
     const browser = await puppeteer.launch({
         args: [
             '--no-sandbox',
@@ -33,7 +34,7 @@ async function createMeme(url, top, bottom, width, height) {
     });
     const page = await browser.newPage();
     await page.setViewport({ width, height })
-    await page.goto(filePath.resolve("public/memeCreator/index.html"));
+    await page.goto(process.env.URL_PATH + "/memeCreator/index.html");
     const path = 'public/imgs/meme.png'
     await page.screenshot({ path });
     await browser.close();
