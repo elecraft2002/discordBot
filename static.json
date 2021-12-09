@@ -1,0 +1,9 @@
+{
+    "root": "public",
+    "clean_urls": true,
+    "headers": {
+        "/**": {
+            "Acces-Control-Allow-Origin": "*"
+        }
+    }
+}

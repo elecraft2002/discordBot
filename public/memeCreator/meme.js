@@ -20,11 +20,11 @@ async function createMeme(url, top, bottom, width, height) {
         <p class="bottom">${bottom}</p>
     </body>
     </html>`
-    fs.writeFile("memeCreator/index.html", html, err => {
+    fs.writeFile("public/memeCreator/index.html", html, err => {
         if (err)
             console.log(err)
     })
-    console.log(filePath.resolve("memeCreator/index.html"))
+    console.log(filePath.resolve("public/memeCreator/index.html"))
     const browser = await puppeteer.launch({
         args: [
             '--no-sandbox',
@@ -33,8 +33,8 @@ async function createMeme(url, top, bottom, width, height) {
     });
     const page = await browser.newPage();
     await page.setViewport({ width, height })
-    await page.goto(filePath.resolve("memeCreator/index.html"));
-    const path = 'imgs/meme.png'
+    await page.goto(filePath.resolve("public/memeCreator/index.html"));
+    const path = 'public/imgs/meme.png'
     await page.screenshot({ path });
     await browser.close();
     return path

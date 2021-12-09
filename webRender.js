@@ -12,7 +12,7 @@ async function screenshot(url) {
     await page.goto(url, {
         waitUntil: 'networkidle2',
     });
-    const path = 'imgs/screenshot.png'
+    const path = 'public/imgs/screenshot.png'
     await page.screenshot({ path });
     await browser.close();
     return path
