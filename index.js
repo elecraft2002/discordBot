@@ -105,7 +105,7 @@ client.on('message', message => {
                 console.log(img.url)
                 console.log(top)
                 console.log(bottom)
-                const meme = require("./memeCreator/meme")
+                const meme = require("./public/memeCreator/meme")
                 try {
                     const path = await meme.createMeme(img.url, top, bottom, img.width, img.height)
                     message.channel.send({
