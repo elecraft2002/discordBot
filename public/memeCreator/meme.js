@@ -22,7 +22,7 @@ async function createMeme(url, top, bottom, width, height) {
         document.getElementById("top").innerText = top
         document.getElementById("bottom").innerText = bottom
     }, url, top, bottom)
-    await page.waitForSelector("#img")
+    await page.waitForNetworkIdle()
     await page.screenshot({ path });
     await browser.close();
     return path
